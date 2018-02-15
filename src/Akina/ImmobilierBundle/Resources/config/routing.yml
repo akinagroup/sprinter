@@ -1,0 +1,23 @@
+akina_immobilier_homepage:
+    path:     /
+    defaults: { _controller: AkinaImmobilierBundle:Default:index }
+
+akina:
+    path:     /list
+    defaults: { _controller: AkinaImmobilierBundle:Front:search }
+
+akina_immobilier:
+    path:     /add
+    defaults: { _controller: AkinaImmobilierBundle:Admin:add}
+
+listBien:
+    path:     /list
+    defaults: { _controller: AkinaImmobilierBundle:Front:list}
+    
+disponibilite:
+    path:     /list/{id}
+    defaults: { _controller: AkinaImmobilierBundle:Front:disponibilite } 
+
+accueil:
+    path:     /laccueil
+    defaults: { _controller: AkinaImmobilierBundle:Front:search } 
