@@ -1,0 +1,20 @@
+public function listAction(Request $req)
+    {
+        $em = $this
+        ->getDoctrine()
+        ->getManager();
+
+        if ($req->isMethod('POST')) {
+            $localite = $em->getRepository('SNTDarmankoBundle:Localite')->find($_POST['localite']);
+            $type = $em->getRepository('SNTDarmankoBundle:TypeBien')->find($_POST['type']);
+            $listbien = $em->getRepository('SNTDarmankoBundle:Bien')->findBy(['localite' => $localite, 'type' => $type]);
+        } else {
+            $listbien = $em->getRepository('SNTDarmankoBundle:Bien')->findAll();
+        }
+        $listType = $em->getRepository('SNTDarmankoBundle:TypeBien')->findAll();
+        $listLocalite = $em->getRepository('SNTDarmankoBundle:Localite')->findAll();
+
+        return $this->render('SNTDarmankoBundle:reservation:list.html.twig', array(
+        'biens' => $listbien, 'types' => $listType, 'localites' => $listLocalite,
+        ));
+    }
